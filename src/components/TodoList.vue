@@ -1,6 +1,6 @@
 <template>
   <ul class="list">
-    <TodoItem v-for="todo in getTodos" :key="todo.id" todo />
+    <TodoItem v-for="todo in getTodos" :key="todo.id" :todo="todo" />
   </ul>
 </template>
 
@@ -16,10 +16,16 @@ export default {
   },
   setup() {
     const store = useStore();
-    console.log();
-    return {};
+    const getTodos = computed(() => store.getters.getTodos);
+    return {
+      getTodos,
+    };
   },
 };
 </script>
 
-<style></style>
+<style>
+.list {
+  padding: 0;
+}
+</style>

@@ -17,12 +17,15 @@ import { useStore } from "vuex";
 export default {
   setup() {
     const store = useStore();
-
     const title = ref("");
-
+    
     const addTodo = () => {
-		console.log(store)
-	};
+      store.dispatch("addTodo", { title: title.value });
+      clearInput();
+    };
+    const clearInput = () => {
+      title.value = "";
+    };
 
     return {
       addTodo,
