@@ -6,7 +6,7 @@
       :value="todo.isDone"
       class="checkbox"
     />
-    <span class="title" @dblclick="toggleEdit" v-if="!isEdit">{{
+    <span :class="['title', {'done': todo.isDone}]" @dblclick="toggleEdit" v-if="!isEdit">{{
       todo.title
     }}</span>
     <input
@@ -88,5 +88,8 @@ export default {
 }
 .delete {
   cursor: pointer;
+}
+.done {
+  text-decoration: line-through;
 }
 </style>
